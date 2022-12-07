@@ -24,8 +24,6 @@ from monai.data import Dataset, DataLoader
 from PIL import Image
 from sklearn.metrics import f1_score, accuracy_score
 
-from mlflow import log_metric, log_param, log_artifacts
-import mlflow.pytorch
 
 
 # %%
@@ -110,10 +108,14 @@ class CustomModel(nn.Module):
     
     def __init__(self, model_name):
         super().__init__()
-        self.model = timm.create_model(model_name=model_name, pretrained = True, num_classes=7)
+        self.model = timm.create_model(model_name=model_name, pretrained = True)
+        self.dimred = nn.Linear(1000, 64)
+        self.head = nn.Linear(64,7)
     
     def forward(self, x):
         x = self.model(x)
+        x = self.dimred(x)
+        x = self.head(x)
         return x
 # %% Losses
 class FocalLoss(nn.Module):
@@ -164,7 +166,7 @@ class CustomTrainer:
         self.args = args
         self.sub_dirs = os.listdir(self.root_dir)
         self.best = np.inf
-        self.device = torch.device('cpu')
+        self.device = torch.device('cuda:0')
         self.history = {
             'train_loss': [],
             'valid_loss': [],
