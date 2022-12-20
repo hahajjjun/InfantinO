@@ -28,6 +28,7 @@ from sklearn.metrics import f1_score, accuracy_score
 from onn import ONN
 
 from mlflow import log_metric, log_param, log_artifacts
+import mlflow
 import mlflow.pytorch
 
 
@@ -59,8 +60,9 @@ class CustomModel(nn.Module):
 class CustomTrainer:
 
     def __init__(self):
-        with open('./pool.json', 'r') as f:
-            path_list = json.load(f)['PATH']
+        path_list = []
+        for subdir in glob('../data/online_raw/*'):
+            path_list.extend(sorted(glob(subdir+'/*')))
         random.shuffle(path_list)
         dataset_size = len(path_list)
         train_size = int(dataset_size * 0.8)
@@ -86,7 +88,7 @@ class CustomTrainer:
         self.feature_extractor.load_state_dict(model_dict)
         self.onn_network = ONN(features_size=64, max_num_hidden_layers=2, qtd_neuron_per_hidden_layer=12, n_classes=7)
 
-    def preprocessor(self, img_path):
+    def preprocessor(self, img_path, aug=False):
         encoder = {
             'angry': 0,
             'disgust': 1,
@@ -103,7 +105,8 @@ class CustomTrainer:
         normalize = A.Compose(
             A.Sequential([
                 A.Normalize(),
-                A.Resize(224, 224)
+                A.Resize(224, 224),
+                A.HorizontalFlip(p=0.5)
             ])
         )
 
@@ -132,15 +135,20 @@ class CustomTrainer:
         X_test = X_test.squeeze()
         y_test = y_test.squeeze()
         
-        for i in range(len(self.train_files)):
-            X_train, y_train = self.preprocessor(self.train_files[i])
-            self.onn_network.partial_fit(X_train, y_train)
-            print(f"Image {i+1}: {decoder[int(y_train[0])]}, {self.train_files[i]}")
-            predictions = self.onn_network.predict(X_test)
-            print("Online Accuracy: {}".format(accuracy_score(y_test, predictions)))
+        with mlflow.start_run() as run:
+            for i in range(len(self.train_files)):
+                X_train, y_train = self.preprocessor(self.train_files[i])
+                self.onn_network.partial_fit(X_train, y_train)
+                mlflow.pytorch.log_model(self.onn_network, "model")  # logging scripted model
+                model_path = mlflow.get_artifact_uri("model")
+                if i == 0:
+                    print(f"Model saved @ {model_path}")
+                print(f"Image {i+1}: {decoder[int(y_train[0])]}, {self.train_files[i]}")
+                predictions = self.onn_network.predict(X_test)
+                print("Online Accuracy: {}".format(accuracy_score(y_test, predictions)))
         
-        print(y_test)
-        print(predictions)
+        print("GT:", y_test)
+        print("PRED:", predictions)
 
     
 # %%

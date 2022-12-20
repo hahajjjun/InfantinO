@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/f870a1af1b2549419c65220d3af78ffa/artifacts
+end_time: 1671574368485
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f870a1af1b2549419c65220d3af78ffa
+run_name: useful-crow-410
+run_uuid: f870a1af1b2549419c65220d3af78ffa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671573701674
+status: 3
+tags: []
+user_id: jhpark
