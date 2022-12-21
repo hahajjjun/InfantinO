@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/cef228da94b347ee927a5aeaa2f595eb/artifacts
+end_time: 1671642444274
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cef228da94b347ee927a5aeaa2f595eb
+run_name: sneaky-trout-67
+run_uuid: cef228da94b347ee927a5aeaa2f595eb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671641904418
+status: 3
+tags: []
+user_id: jhpark

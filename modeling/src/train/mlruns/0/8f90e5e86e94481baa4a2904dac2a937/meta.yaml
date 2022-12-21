@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/8f90e5e86e94481baa4a2904dac2a937/artifacts
+end_time: 1671641497013
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8f90e5e86e94481baa4a2904dac2a937
+run_name: sedate-squirrel-728
+run_uuid: 8f90e5e86e94481baa4a2904dac2a937
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671640954612
+status: 3
+tags: []
+user_id: jhpark

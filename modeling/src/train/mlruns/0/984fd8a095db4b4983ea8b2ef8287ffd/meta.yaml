@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/984fd8a095db4b4983ea8b2ef8287ffd/artifacts
+end_time: 1671628535568
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 984fd8a095db4b4983ea8b2ef8287ffd
+run_name: big-cub-211
+run_uuid: 984fd8a095db4b4983ea8b2ef8287ffd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671628531567
+status: 4
+tags: []
+user_id: jhpark

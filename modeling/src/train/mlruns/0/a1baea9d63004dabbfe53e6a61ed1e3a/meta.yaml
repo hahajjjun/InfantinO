@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/a1baea9d63004dabbfe53e6a61ed1e3a/artifacts
+end_time: 1671638781722
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a1baea9d63004dabbfe53e6a61ed1e3a
+run_name: angry-doe-341
+run_uuid: a1baea9d63004dabbfe53e6a61ed1e3a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671638357067
+status: 3
+tags: []
+user_id: jhpark

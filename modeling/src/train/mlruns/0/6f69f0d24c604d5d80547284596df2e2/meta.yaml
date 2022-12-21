@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/6f69f0d24c604d5d80547284596df2e2/artifacts
+end_time: 1671629055035
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6f69f0d24c604d5d80547284596df2e2
+run_name: nimble-sheep-212
+run_uuid: 6f69f0d24c604d5d80547284596df2e2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671629016573
+status: 4
+tags: []
+user_id: jhpark

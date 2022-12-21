@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/1bc614790936425ca83471d19e78e92e/artifacts
+end_time: 1671605373514
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1bc614790936425ca83471d19e78e92e
+run_name: invincible-asp-479
+run_uuid: 1bc614790936425ca83471d19e78e92e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671605281291
+status: 4
+tags: []
+user_id: jhpark
