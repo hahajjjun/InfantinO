@@ -48,12 +48,12 @@ class CustomModel(nn.Module):
     
     def __init__(self):
         super().__init__()
-        self.model = timm.create_model(model_name='efficientnet_b1')
-        self.dimred = nn.Linear(1000, 64)
+        self.model = timm.create_model(model_name='efficientnet_b1', num_classes=64)
+        #self.dimred = nn.Linear(1000, 64)
     
     def forward(self, x):
         x = self.model(x)
-        x = self.dimred(x)
+        #x = self.dimred(x)
         return x
 
 # %% Trainer
@@ -76,18 +76,18 @@ class CustomTrainer:
         self.valid_files = valid_paths
         
         self.feature_extractor = CustomModel()
-        pretrained_dict = torch.load('feature_extractor.pth')
-        model_dict = self.feature_extractor.state_dict()
-        pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
+        #pretrained_dict = torch.load('feature_extractor.pth')
+        #model_dict = self.feature_extractor.state_dict()
+        #pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
 
-        self.feature_extractor.load_state_dict(pretrained_dict)
+        #self.feature_extractor.load_state_dict(pretrained_dict)
 
-        for name, param in self.feature_extractor.named_parameters():
-            if name in pretrained_dict.keys():
-                param.requires_grad = False
+        #for name, param in self.feature_extractor.named_parameters():
+        #    if name in pretrained_dict.keys():
+        #        param.requires_grad = False
 
-        self.feature_extractor.load_state_dict(model_dict)
-        self.onn_network = ONN(features_size=64, max_num_hidden_layers=3, qtd_neuron_per_hidden_layer=4, n_classes=7)
+        #self.feature_extractor.load_state_dict(model_dict)
+        self.onn_network = ONN(features_size=64, max_num_hidden_layers=2, qtd_neuron_per_hidden_layer=4, n_classes=7)
 
     def preprocessor(self, img_path, aug=False):
         encoder = {
@@ -136,9 +136,13 @@ class CustomTrainer:
         X_test = X_test.squeeze()
         y_test = y_test.squeeze()
         
+        np.save('feature.npy', X_test)
+        np.save('label.npy', y_test)
+        
         with mlflow.start_run() as run:
             for i in range(len(self.train_files)):
                 X_train, y_train = self.preprocessor(self.train_files[i])
+                
                 self.onn_network.partial_fit(X_train, y_train)
                 #mlflow.pytorch.log_model(self.onn_network, "model")  # logging scripted model
                 #model_path = mlflow.get_artifact_uri("model")
