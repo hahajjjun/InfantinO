@@ -67,6 +67,7 @@ class CustomTrainer:
         dataset_size = len(path_list)
         train_size = int(dataset_size * 0.8)
         validation_size = int(dataset_size * 0.2)
+        print(train_size, validation_size)
 
         train_paths = path_list[:train_size]
         valid_paths = path_list[train_size:train_size+validation_size]
@@ -86,7 +87,7 @@ class CustomTrainer:
                 param.requires_grad = False
 
         self.feature_extractor.load_state_dict(model_dict)
-        self.onn_network = ONN(features_size=64, max_num_hidden_layers=2, qtd_neuron_per_hidden_layer=12, n_classes=7)
+        self.onn_network = ONN(features_size=64, max_num_hidden_layers=3, qtd_neuron_per_hidden_layer=4, n_classes=7)
 
     def preprocessor(self, img_path, aug=False):
         encoder = {
@@ -139,10 +140,10 @@ class CustomTrainer:
             for i in range(len(self.train_files)):
                 X_train, y_train = self.preprocessor(self.train_files[i])
                 self.onn_network.partial_fit(X_train, y_train)
-                mlflow.pytorch.log_model(self.onn_network, "model")  # logging scripted model
-                model_path = mlflow.get_artifact_uri("model")
-                if i == 0:
-                    print(f"Model saved @ {model_path}")
+                #mlflow.pytorch.log_model(self.onn_network, "model")  # logging scripted model
+                #model_path = mlflow.get_artifact_uri("model")
+                #if i == 0:
+                #    print(f"Model saved @ {model_path}")
                 print(f"Image {i+1}: {decoder[int(y_train[0])]}, {self.train_files[i]}")
                 predictions = self.onn_network.predict(X_test)
                 print("Online Accuracy: {}".format(accuracy_score(y_test, predictions)))
