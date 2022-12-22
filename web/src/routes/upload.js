@@ -7,7 +7,7 @@ function Upload() {
     const [tag,setTag] = useState();
     const [imagesrc, setImagesrc] = useState('');
     const [print, setPrint] = useState()
-    const encodeFileToBase64 = (fileBlob) => {
+    function encodeFileToBase64(fileBlob) {
         const reader = new FileReader();
         reader.readAsDataURL(fileBlob);
         return new Promise((resolve)=> {
@@ -85,7 +85,6 @@ function Upload() {
             };
         axios.post(url, formData, config).then((response) => {
                 console.log(response.data);
-                const url = response.data.url;    //back 에서 날라온거 받음
             });
 };
     return (

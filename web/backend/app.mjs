@@ -1,4 +1,4 @@
-import "dotenv/config";
+// import "dotenv/config";
 import express, { json } from "express";
 import cors from "cors";
 import uploadMiddleware from "./upload.mjs";
