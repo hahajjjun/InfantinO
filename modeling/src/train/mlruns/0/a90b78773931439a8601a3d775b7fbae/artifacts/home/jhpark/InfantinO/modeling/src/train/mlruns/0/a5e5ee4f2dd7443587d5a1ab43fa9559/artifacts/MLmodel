@@ -1,0 +1,19 @@
+artifact_path: home/jhpark/InfantinO/modeling/src/train/mlruns/0/a5e5ee4f2dd7443587d5a1ab43fa9559/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.8.12
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 0.23.2
+mlflow_version: 2.0.1
+model_uuid: 520b8c24ad434194a9aed6eecb15fd9a
+run_id: a90b78773931439a8601a3d775b7fbae
+utc_time_created: '2022-12-22 09:10:56.353166'

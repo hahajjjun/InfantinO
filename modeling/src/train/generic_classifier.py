@@ -56,14 +56,6 @@ class CustomDataset(Dataset):
                         A.ColorJitter(p=prob['Colorjitter']),
                     ])
                 ]),
-                A.OneOf([
-                    A.Sequential([
-                        A.augmentations.geometric.Affine(scale=[0.8,1.2], translate_px=10, rotate=[-30,30], p=prob['Affine']),
-                        A.augmentations.geometric.transforms.ElasticTransform(p=prob['Elastic'])
-                    ])
-                ]),
-
-                A.HorizontalFlip(p=0.5),
                 A.Normalize(),
             ])
         )
@@ -109,7 +101,7 @@ class CustomModel(nn.Module):
     
     def __init__(self, model_name):
         super().__init__()
-        self.model = timm.create_model(model_name=model_name, pretrained = True)
+        self.model = timm.create_model(model_name=model_name, pretrained = False)
         self.dimred = nn.Linear(1000, 64)
         self.head = nn.Linear(64,7)
     
@@ -244,6 +236,7 @@ class CustomTrainer:
             self.optimizer.zero_grad()
             x = x.to(self.device, dtype = torch.float)
             y = y.to(self.device, dtype = torch.long)
+            np.save('adult.npy', x.detach().cpu().numpy())
             y_pred = self.model(x)
             loss = self.criterion(y_pred, y)
             loss.backward()
