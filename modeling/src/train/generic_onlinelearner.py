@@ -108,7 +108,6 @@ class CustomDataset(Dataset):
 
 
         def __getitem__(self, index):
-
             image_path = self.paths[index]
             encoder = {
                 'angry': 0,
@@ -148,7 +147,7 @@ class CustomDataset(Dataset):
 
             if self.mode == 'train':
                 img = self.train_transform(image=img)['image']
-            elif self.mode == 'valid':
+            elif (self.mode == 'valid')|(self.mode =='test'):
                 img = self.val_transform(image=img)['image']
             img = np.transpose(img, axes=(2,0,1))
             img = torch.tensor(img)
@@ -276,7 +275,7 @@ class CustomTrainer:
     def run_partial_unit(self, x, y):
         self.train_partial(x,y)
         self.valid_partial()
-    
+
     def run_partial(self):
         pretrained_dict = torch.load('best.pth')
         model_dict = self.encoder.state_dict()
@@ -303,10 +302,26 @@ class CustomTrainer:
                 if i == 0:
                     model_path = mlflow.get_artifact_uri("model")
                     print(f"Model saved @ {model_path}")
+                    with open('recent_model_uri.log', 'w') as f:
+                        f.write(model_path)
                 x = x.to(self.device)
                 y = y.numpy()
                 print('Iteration', i, end=' ')
                 self.run_partial_unit(x,y)
+
+    def inference_partial(self, path, model_uri):
+        pretrained_dict = torch.load('best.pth')
+        model_dict = self.encoder.state_dict()
+        pretrained_dict = {k:v for k,v in pretrained_dict.items() if k in model_dict}
+        model_dict.update(pretrained_dict)
+        self.encoder.load_state_dict(model_dict)
+        self.encoder = self.encoder.to(self.device)
+        img = torch.tensor(CustomDataset([path], mode='test').__getitem__(0)[None,...], device=self.device)
+        x_embed = self.encoder(img).detach().cpu().numpy()
+        self.onn_network = mlflow.sklearn.load_model(model_uri=model_uri)
+        y = self.onn_network.predict(x_embed)
+        prob = self.onn_network.predict_proba(x_embed)
+        return y, prob
 
     def log_image(self):
         # from nnU-Net snippet
@@ -340,5 +355,12 @@ class CustomTrainer:
 # %%
 if __name__ == "__main__":
     trainer = CustomTrainer()
-    trainer.run_full()
-    trainer.run_partial()
+    #trainer.run_full()
+    #trainer.run_partial()
+    with open('recent_model_uri.log', 'r') as f:
+        model_uri = f.readline()
+    img_path = '/home/jhpark/InfantinO/modeling/src/data/online_raw/disgust/KakaoTalk_20221222_150935369.jpg'
+    print("Fetch model from", model_uri)
+    print("Inference on", img_path)
+    prediction, uncertainty = trainer.inference_partial(path=img_path, model_uri=model_uri)
+    print(list(prediction), list(uncertainty[0,]))
