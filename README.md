@@ -66,7 +66,8 @@ Train method is same as above.
 
 
 ## Authors
-![Alt text](https://cfile1.onoffmix.com/images/event/267759)
+![Alt text](https://velog.velcdn.com/images/jugjug/post/46b435c4-765f-40c2-b4fb-e6a68f490bca/image.png)
+
 ## Team InfantinO
 - [YBIGTA 20기 박준하👑](https://github.com/hahajjjun)
 - [YBIGTA 20기 이주훈](https://github.com/giovanlee)
