@@ -37,7 +37,7 @@ InfantinO, the Online learning framework for infants' facial expression recognit
   (4) Performance
   -  
 
-  - Distinguish face expression thruogh softmax
+  - Distinguish face expression through softmax
 
     ![Alt text](https://mania.kr/g2/data/file/humor/view_thumbnail/mania-done-1621492699_42L3K65Q_1EFA2093-02E9-420F-A0FB-EBB20B7AD657.jpg)
 
