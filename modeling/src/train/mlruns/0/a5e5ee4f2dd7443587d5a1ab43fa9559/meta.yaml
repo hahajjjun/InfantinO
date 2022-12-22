@@ -1,5 +1,5 @@
 artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/a5e5ee4f2dd7443587d5a1ab43fa9559/artifacts
-end_time: 1671688962378
+end_time: 1671700767831
 entry_point_name: ''
 experiment_id: '0'
 lifecycle_stage: active
@@ -10,6 +10,6 @@ source_name: ''
 source_type: 4
 source_version: ''
 start_time: 1671688670080
-status: 4
+status: 3
 tags: []
 user_id: jhpark

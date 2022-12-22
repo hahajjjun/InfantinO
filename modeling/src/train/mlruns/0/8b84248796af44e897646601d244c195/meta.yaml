@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/8b84248796af44e897646601d244c195/artifacts
+end_time: 1671700617680
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8b84248796af44e897646601d244c195
+run_name: a5e5ee4f2dd7443587d5a1ab43fa9559
+run_uuid: 8b84248796af44e897646601d244c195
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671700615921
+status: 3
+tags: []
+user_id: jhpark

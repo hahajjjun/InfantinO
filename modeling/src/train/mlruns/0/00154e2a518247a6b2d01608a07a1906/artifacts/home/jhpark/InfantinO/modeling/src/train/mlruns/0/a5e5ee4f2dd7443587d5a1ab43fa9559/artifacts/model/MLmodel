@@ -1,4 +1,4 @@
-artifact_path: model
+artifact_path: home/jhpark/InfantinO/modeling/src/train/mlruns/0/a5e5ee4f2dd7443587d5a1ab43fa9559/artifacts/model
 flavors:
   python_function:
     env:
@@ -14,6 +14,6 @@ flavors:
     serialization_format: cloudpickle
     sklearn_version: 0.23.2
 mlflow_version: 2.0.1
-model_uuid: a93c0934feea4ddea7f23fb96fd61ff9
-run_id: a5e5ee4f2dd7443587d5a1ab43fa9559
-utc_time_created: '2022-12-22 09:19:26.145619'
+model_uuid: 59d4b1c414af4e589a7899d922f30c93
+run_id: 00154e2a518247a6b2d01608a07a1906
+utc_time_created: '2022-12-22 09:11:54.831201'

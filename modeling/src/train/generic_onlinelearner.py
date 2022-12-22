@@ -262,7 +262,7 @@ class CustomTrainer:
     
     def train_partial(self, x, y):
         x_embed = self.encoder(x).detach().cpu().numpy()
-        self.onn_network = self.onn_network.partial_fit(x_embed, y, np.unique(self.y_test))
+        self.onn_network = self.onn_network.partial_fit(x_embed, y, np.array([0,1,2,3,4,5,6]))
     
     def valid_partial(self):
         predictions = self.onn_network.predict(self.x_test)
@@ -308,6 +308,30 @@ class CustomTrainer:
                 y = y.numpy()
                 print('Iteration', i, end=' ')
                 self.run_partial_unit(x,y)
+
+    def fit_partial(self, path, model_uri): # 새 이미지 한 개 받아서 모델 업데이트하고 validation하는 것까지
+        pretrained_dict = torch.load('best.pth')
+        model_dict = self.encoder.state_dict()
+        pretrained_dict = {k:v for k,v in pretrained_dict.items() if k in model_dict}
+        model_dict.update(pretrained_dict)
+        self.encoder.load_state_dict(model_dict)
+        self.encoder = self.encoder.to(self.device)
+        #self.x_test = []
+        #self.y_test = []
+        #print("Generating test set")
+        #for _, (x,y) in enumerate(self.valid_dataloader):
+        #    self.x_test.append(self.encoder(x.to(self.device)).detach().cpu().numpy())
+        #    self.y_test.append(y.numpy())
+        #self.x_test = np.stack(self.x_test, axis=0).squeeze(1)
+        #self.y_test = np.stack(self.y_test, axis=0).squeeze(1)
+        item = CustomDataset([path], mode='train').__getitem__(0)
+        img, label = torch.tensor(item[0][None,...], device=self.device), item[1][None,...]
+        self.onn_network = mlflow.sklearn.load_model(model_uri=model_uri)
+        self.train_partial(img, label)
+        ### 이렇게 해도 되는 거 맞나? LOG할 때에는 다른 방식이 필요해 보이는데...
+        with mlflow.start_run(run_id=model_uri.split('/')[-3]) as run:
+            mlflow.sklearn.log_model(self.onn_network, "model")
+        #self.valid_partial()
 
     def inference_partial(self, path, model_uri):
         pretrained_dict = torch.load('best.pth')
@@ -359,7 +383,7 @@ if __name__ == "__main__":
     #trainer.run_partial()
     with open('recent_model_uri.log', 'r') as f:
         model_uri = f.readline()
-    img_path = '/home/jhpark/InfantinO/modeling/src/data/online_raw/disgust/KakaoTalk_20221222_150935369.jpg'
+    img_path = '/home/jhpark/InfantinO/modeling/src/data/online_raw/disgust/KakaoTalk_20221222_153349208.jpg'
     print("Fetch model from", model_uri)
     print("Inference on", img_path)
     prediction, uncertainty = trainer.inference_partial(path=img_path, model_uri=model_uri)
