@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/9550e74a2c5e4c8e9aee1add45eef7ae/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9550e74a2c5e4c8e9aee1add45eef7ae
+run_name: resilient-newt-74
+run_uuid: 9550e74a2c5e4c8e9aee1add45eef7ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671700104078
+status: 1
+tags: []
+user_id: jhpark

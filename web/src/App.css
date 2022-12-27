@@ -1,0 +1,141 @@
+.btn1 {
+  padding: 10px;
+  position: absolute;
+  left: 0px;
+  bottom: 20%;
+  width: 50%;
+  height: 10%;
+  text-align: center;
+  font-family : Tahoma;
+  color: rgb(255,255,255);
+  text-decoration-line: none;
+}
+.btn2 {
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  width: 50%;
+  height: 10%;
+  text-align: center;
+  font-family : Tahoma;
+  text-decoration-style: none;
+}
+.btn3 {
+  padding: 10px;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  z-index: 5;
+}
+.title{
+  position: relative;
+  left: 0px;
+  top: 5%;
+  text-align: center;
+  width: 100%;
+  color:rgb(255,255,255);
+}
+.intro{
+  position: absolute;
+  left:20%;
+  text-align: justify;
+  margin: auto;
+  width: 60%;
+  top: 15%;
+  text-align: center;
+  color:palegreen;
+}
+.labelbtn {
+  position: relative;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  margin: 12.5px;
+}
+.label1 {
+  position: fixed;
+  left: 0%;
+  top: 100px;
+}
+.label2 {
+  position: fixed;
+  left: 0%;
+  top: 200px;
+}
+.label3 {
+  position: fixed;
+  left: 0%;
+  top: 300px;
+}
+.label4 {
+  position: fixed;
+  left: 0%;
+  top: 400px;
+}
+.label5 {
+  position: fixed;
+  left: 0%;
+  top: 500px;
+}
+.label6 {
+  position: fixed;
+  left: 0%;
+  top: 600px;
+}
+.label7 {
+  position: fixed;
+  left: 0%;
+  top: 700px;
+}
+.imguploadform{
+  position: absolute;
+  justify-content: center;
+  width: 60%;
+  left: 500px;
+  top: 150px;
+  margin: auto;
+  display: flex;
+}
+.view {
+  position: relative;
+  margin: 15px;
+}
+.labeling {
+  display: inline-block;
+  width: 200px;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  z-index: 5;
+}
+.preview {
+  display: block;
+  width: 40%;
+  border-radius: 10px;
+  position: fixed;
+  left: 30%;
+  top: 200px;
+  text-align: center;
+}
+.imgarrayview {
+  display: block;
+  width: 40%;
+  position: fixed;
+  left: 30%;
+  top: 600px;
+}
+.link {
+  text-decoration-line: none;
+}
+a {
+  text-decoration-line: none;
+  color: white;
+}
+h1 {
+  padding-top: 40px;
+}
+.onn{
+  padding-top: 40px;
+  width:100%;
+}

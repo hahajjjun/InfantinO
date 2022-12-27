@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/5b732a35ab044091a2a9fb8365792562/artifacts
+end_time: 1671602764739
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5b732a35ab044091a2a9fb8365792562
+run_name: burly-shrike-9
+run_uuid: 5b732a35ab044091a2a9fb8365792562
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671602002381
+status: 3
+tags: []
+user_id: jhpark

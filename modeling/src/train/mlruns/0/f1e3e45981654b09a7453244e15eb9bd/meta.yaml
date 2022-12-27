@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/f1e3e45981654b09a7453244e15eb9bd/artifacts
+end_time: 1671688638758
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f1e3e45981654b09a7453244e15eb9bd
+run_name: melodic-squirrel-278
+run_uuid: f1e3e45981654b09a7453244e15eb9bd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671688230099
+status: 4
+tags: []
+user_id: jhpark

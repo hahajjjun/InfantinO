@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/3c768fb17d184906b00b68bb6c4e0f25/artifacts
+end_time: 1671644030092
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3c768fb17d184906b00b68bb6c4e0f25
+run_name: mercurial-sow-153
+run_uuid: 3c768fb17d184906b00b68bb6c4e0f25
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671643477189
+status: 3
+tags: []
+user_id: jhpark

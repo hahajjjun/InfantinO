@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jhpark/InfantinO/modeling/src/train/mlruns/0/3153334df7074e7d882a776840b03cad/artifacts
+end_time: 1671610416101
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3153334df7074e7d882a776840b03cad
+run_name: angry-newt-542
+run_uuid: 3153334df7074e7d882a776840b03cad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671610416090
+status: 4
+tags: []
+user_id: jhpark
