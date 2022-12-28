@@ -13,6 +13,22 @@ InfantinO is an online learning framework targeting infants' facial expression c
 |[YBIGTA 21기 박제연](https://github.com/bonapark00)|Data pipeline, Web Backend|
 |[YBIGTA 21기 장동현](https://github.com/rroyc20)|Web Frontend, Annotation GUI|
 
+## Usage
+    
+``` python
+from generic_onlinelearner import CustomTrainer
+trainer = CustomTrainer()
+trainer.run_full() # Train feature extractor
+trainer.run_partial() # Train online learner : single image is required for model update
+with open('recent_model_uri.log', 'r') as f:
+    model_uri = f.readline()
+img_path = 'example_image.png'
+prediction, uncertainty = trainer.inference_partial(path=img_path, model_uri=model_uri) # Inference for single image input
+```
+
+Transfer to other domain: place your images to 
+[Train Dataset](https://github.com/hahajjjun/InfantinO/tree/master/modeling/src/data/online_raw), with all classes included.
+
 ## Project Procedure
 
   (1) Collect infant face expression data
@@ -33,17 +49,6 @@ InfantinO is an online learning framework targeting infants' facial expression c
 
     ![baby image](https://velog.velcdn.com/images/jugjug/post/0e3adb7e-a59b-40a2-91e0-2163a588558a/image.png)
   
-## How to transfer to other domain
-
-To use for infant face classification, run the following command.
-
-    python3 generic_onlinelearner.py
-
-To use for other domain, place your images to 
-[Train Dataset](https://github.com/hahajjjun/InfantinO/tree/master/modeling/src/data/online_raw), with all classes included.
-Train method is same as above.
-
-    python3 generic_onlinelearner.py
     
 ## Relevant Materials
 
