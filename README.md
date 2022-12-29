@@ -6,11 +6,11 @@ InfantinO is an online learning framework targeting infants' facial expression c
 ## About our team
 |Github||
 |---|---|
-|[YBIGTA 20기 박준하](https://github.com/hahajjjun)|Lead, Modeling, Data pipeline|
+|[YBIGTA 20기 박준하](https://github.com/hahajjjun)|Lead, Modeling, MLOps pipeline|
 |[YBIGTA 20기 이주훈](https://github.com/giovanlee)|Modeling, Data acquisition|
 |[YBIGTA 20기 정정훈](https://github.com/JugJugIE)|Modeling, Dataset acquisition|
-|[YBIGTA 21기 국호연](https://github.com/brightsky77)|Data pipeline, Web Backend|
-|[YBIGTA 21기 박제연](https://github.com/bonapark00)|Data pipeline, Web Backend|
+|[YBIGTA 21기 국호연](https://github.com/brightsky77)|MLOps pipeline, Web Backend|
+|[YBIGTA 21기 박제연](https://github.com/bonapark00)|MLOps pipeline, Web Backend|
 |[YBIGTA 21기 장동현](https://github.com/rroyc20)|Web Frontend, Annotation GUI|
 
 ## Usage
