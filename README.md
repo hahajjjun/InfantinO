@@ -90,8 +90,7 @@ The cycle consists of 3 parts: Model training, Model deploying, and Model retrai
 
 ### 1. Create an environment 
 - In AzureML, you can define an environment from a Docker image, a Docker build context, and a conda specification with a Docker image. Azure ML Environments are used to define the containers where your code will run.
-- We made an environment starting from the existing environment. The environment is uploaded to ACR.
-<p align="center"><img src = "./images/Untitled 3.png" width="40%" height="40%"></p> 
+- We made an environment starting from the existing environment. The environment is uploaded to ACR.<p align="center"><img src = "./images/Untitled 3.png" width="40%" height="40%"></p> 
 - Customize the environment by editing the DockerFile. We added some required packages.
                 
 <p align="center"><img src = "./images/Untitled 5.png" width="40%" height="40%"></p>
