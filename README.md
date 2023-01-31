@@ -126,7 +126,10 @@ Action B.
 
 1. Node.js server stores the pair of information in the s3 bucket.
 2. In the local environment, keep track of the number of data in the s3 bucket. And if the number of data increases, retrains the model with the most recently stored data.
-   
+ 
+## Links
+Presentation slides: https://drive.google.com/file/d/1jGR_O3MjBp1_BM5LIkHuCcIx1niGuEpg/view?usp=drivesdk
+Presentation video https://youtu.be/0y_eo9P65h0
    
 ## Relevant Materials
 
